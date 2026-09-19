@@ -658,7 +658,7 @@ background:#f5f5f5;
     }
 
     /* Put crossword first */
-    ..grid{
+    .grid{
     order:1;
     grid-template-columns:repeat(5, min(17vw, 60px));
     gap:2px;
@@ -721,11 +721,40 @@ background:#f5f5f5;
     }
 
     .popupCard{
-        width:calc(100% - 30px);
-        max-width:350px;
-        padding:25px 18px;
+    width:calc(100% - 30px);
+    max-width:350px;
+    padding:25px 18px;
+}
+
+            /* MOBILE MINI-STYLE CLUE */
+
+    .container .box{
+        display:none;
     }
 
+    #mobileClue{
+        display:block;
+        order:2;
+        width:min(100%, 310px);
+        box-sizing:border-box;
+        background:#b9ddff;
+        padding:12px 18px;
+        margin-top:0;
+        border-radius:0;
+        font-size:16px;
+        text-align:center;
+        min-height:45px;
+    }
+
+    #mobileClueText{
+        display:block;
+    }
+    }
+
+}
+
+#mobileClue{
+    display:none;
 }
 
 </style>
@@ -792,7 +821,9 @@ Time: 00:00
 
 <div id="grid" class="grid"></div>
 
-
+<div id="mobileClue">
+    <span id="mobileClueText"></span>
+</div>
 
 
 <div class="box">
@@ -1357,97 +1388,72 @@ function selectCell(cell){
 
 function highlight(cell){
 
-
     clearHighlight();
 
-
-
     let r=Number(cell.dataset.row);
-
     let c=Number(cell.dataset.col);
 
-
-
+    let mobileClueText =
+        document.getElementById("mobileClueText");
 
 
     if(direction==="across"){
 
-
-
         let start=c;
 
-
-
         while(start>0 && getCell(r,start-1)){
-
             start--;
-
         }
 
-
-
-
         while(start<5 && getCell(r,start)){
-
 
             getCell(r,start)
             .classList.add("selected");
 
-
             start++;
-
 
         }
 
+        let clue =
+            document.getElementById("across"+r);
 
+        clue.classList.add("active");
 
-        document.getElementById("across"+r)
-        .classList.add("active");
-
-
+        mobileClueText.innerHTML =
+            clue.innerHTML;
 
     }
-
 
 
     else{
 
-
-
         let start=r;
 
-
-
         while(start>0 && getCell(start-1,c)){
-
             start--;
-
         }
 
-
-
         while(start<5 && getCell(start,c)){
-
 
             getCell(start,c)
             .classList.add("selected");
 
-
             start++;
-
 
         }
 
+        let clue =
+            document.getElementById("down"+c);
 
+        clue.classList.add("active");
 
-        document.getElementById("down"+c)
-        .classList.add("active");
-
+        mobileClueText.innerHTML =
+            clue.innerHTML;
 
     }
 
-
 }
+
 
 
 
