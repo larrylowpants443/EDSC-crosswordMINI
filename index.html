@@ -632,69 +632,82 @@ background:#f5f5f5;
 /* ============================= */
 /* MOBILE RESPONSIVE DESIGN */
 /* ============================= */
-
 @media (max-width: 700px){
 
     #game{
         width:100%;
-        padding:0 10px;
+        padding:0 8px;
     }
 
     #game h1{
-        font-size:28px;
-        margin-top:25px;
+        font-size:26px;
+        margin-top:15px;
+        margin-bottom:8px;
     }
 
     #timer{
-        font-size:18px;
+        font-size:17px;
+        margin-top:5px;
+        margin-bottom:12px;
     }
 
     .container{
         flex-direction:column;
         align-items:center;
-        gap:15px;
-        margin-top:20px;
+        gap:8px;
+        margin-top:10px;
         width:100%;
     }
 
-    /* Put crossword first */
+
+    /* ===================== */
+    /* SMALL MOBILE GRID */
+    /* ===================== */
+
     .grid{
-    order:1;
-    grid-template-columns:repeat(5, min(17vw, 60px));
-    gap:2px;
-    padding:4px;
-}
-
-.container .box:first-child{
-    order:2;
-}
-
-.container .box:last-child{
-    order:3;
-}
+        order:1;
+        grid-template-columns:repeat(5,44px);
+        gap:2px;
+        padding:3px;
+    }
 
     .cell{
-        width:min(17vw, 60px);
-        height:min(17vw, 60px);
-        font-size:min(8vw, 30px);
+        width:44px;
+        height:44px;
+        font-size:25px;
     }
 
-    /* Clues underneath */
-    .box{
-        width:100%;
-        max-width:400px;
-        padding:15px;
+
+    /* ===================== */
+    /* MOBILE CLUE */
+    /* ===================== */
+
+    .container .box{
+        display:none;
     }
 
-    .box h2{
-        text-align:center;
-        margin-top:5px;
-    }
-
-    .clue{
+    #mobileClue{
+        display:block;
+        order:2;
+        width:236px;
+        box-sizing:border-box;
+        background:#b9ddff;
+        padding:9px 10px;
+        margin-top:0;
+        border-radius:0;
         font-size:14px;
-        padding:7px;
+        text-align:center;
+        min-height:40px;
     }
+
+    #mobileClueText{
+        display:block;
+    }
+
+
+    /* ===================== */
+    /* BUTTONS */
+    /* ===================== */
 
     #pauseButton{
         width:45px;
@@ -705,10 +718,15 @@ background:#f5f5f5;
     }
 
     button{
-        font-size:15px;
-        padding:10px 18px;
-        margin:6px;
+        font-size:14px;
+        padding:9px 16px;
+        margin:5px;
     }
+
+
+    /* ===================== */
+    /* START SCREEN */
+    /* ===================== */
 
     .startCard{
         width:calc(100% - 30px);
@@ -720,35 +738,15 @@ background:#f5f5f5;
         font-size:32px;
     }
 
+
+    /* ===================== */
+    /* POPUPS */
+    /* ===================== */
+
     .popupCard{
-    width:calc(100% - 30px);
-    max-width:350px;
-    padding:25px 18px;
-}
-
-            /* MOBILE MINI-STYLE CLUE */
-
-    .container .box{
-        display:none;
-    }
-
-    #mobileClue{
-        display:block;
-        order:2;
-        width:min(100%, 310px);
-        box-sizing:border-box;
-        background:#b9ddff;
-        padding:12px 18px;
-        margin-top:0;
-        border-radius:0;
-        font-size:16px;
-        text-align:center;
-        min-height:45px;
-    }
-
-    #mobileClueText{
-        display:block;
-    }
+        width:calc(100% - 30px);
+        max-width:350px;
+        padding:25px 18px;
     }
 
 }
